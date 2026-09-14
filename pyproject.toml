@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "blackboard-mcp-trinity"
+version = "0.1.0"
+description = "Private, read-only MCP server for Trinity College Dublin Blackboard Ultra exports"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["mcp>=1.0,<2"]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+blackboard-mcp-trinity = "blackboard_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/blackboard_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
